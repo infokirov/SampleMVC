@@ -9,11 +9,6 @@ function pre ($s){
 
 require __DIR__ . DIRECTORY_SEPARATOR . 'autoload.php';
 
-$article = \App\Models\Article::findById(2);
-$data = \App\Models\Article::findAll();
+$article = new \App\Models\Article;
+$user = new \App\Models\User;
 
-$data = \App\Models\Article::insertRow(['Новость 4','Текст новости 4']);
-
-//$data = \App\Models\Article::findAll();
-
-pre($data);

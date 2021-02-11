@@ -12,6 +12,14 @@ class Article extends Model
     public $title;
     public $content;
 
+    public const SCHEMA = ['id','title','content'];
+
+
+    public function getSchema()
+    {
+        return $this->schema;
+    }
+
     public function getModelName(){
         return 'Новость';
     }
