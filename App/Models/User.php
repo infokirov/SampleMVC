@@ -8,12 +8,12 @@ class User extends Model
 {
 
     public const TABLE = 'users';
-    public const SCHEMA = ['id','name','email'];
-
+    
     public $name;
     public $email;
 
-    public function getModelName(){
+    public function getModelName():string
+    {
         return 'Юзер';
     }
 

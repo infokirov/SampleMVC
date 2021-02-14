@@ -9,9 +9,9 @@ function pre ($s){
 
 require __DIR__ . DIRECTORY_SEPARATOR . 'autoload.php';
 
-$lim = (!empty($_GET['out'])) ? (int) $_GET['out'] : $lim = 0;
+$_GET['id'] ? $lim = $_GET['id'] : $lim=0 ;
 
-$news =  \App\Models\Article::findAll($lim);
+$news =  \App\Models\Article::findById($lim);
 //$user = new \App\Models\User;
 
 include (__DIR__ . DIRECTORY_SEPARATOR . $dir['template'] . 'index.tpl.php');

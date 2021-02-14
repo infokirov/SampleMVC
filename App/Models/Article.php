@@ -8,20 +8,13 @@ class Article extends Model
 {
 
     public const TABLE = 'news';
-
+    
     public $title;
-    public $content;
+    public $content;    
 
-    public const SCHEMA = ['id','title','content'];
-
-
-    public function getSchema()
+    public function getModelName():string
     {
-        return $this->schema;
-    }
-
-    public function getModelName(){
-        return 'Новость';
+        return 'Новости';
     }
 
 }
