@@ -2,13 +2,16 @@
 
 namespace App;
 
-class Db
+use App\Config;
+
+class Db extends Config
 {
     protected $dbh;
 
     public function __construct()
     {
-        $config = (include __DIR__ . '/../config.php')['db'];
+        $config = \App\Config::getDb();
+
         $this->dbh = new \PDO (
             'mysql:host=' . $config['host'] . ';dbname=' . $config['dbname'],
             $config['user'],

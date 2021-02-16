@@ -12,6 +12,7 @@ require __DIR__ . DIRECTORY_SEPARATOR . 'autoload.php';
 $lim = (!empty($_GET['out'])) ? (int) $_GET['out'] : $lim = 0;
 
 $news =  \App\Models\Article::findAll($lim);
-//$user = new \App\Models\User;
+
+$dir = \App\Config::getDir();
 
 include (__DIR__ . DIRECTORY_SEPARATOR . $dir['template'] . 'index.tpl.php');
