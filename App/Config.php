@@ -24,10 +24,9 @@ class Config
     
     static public function getInstance()
     {
-        if(is_null(self::$_instance))
-            {
+        if(is_null(self::$_instance)){
                 self::$_instance = new self();
-            }
+        }
         return self::$_instance;
     }
 

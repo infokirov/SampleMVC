@@ -2,13 +2,36 @@
 
 namespace App;
 
-abstract class View 
+class View 
 {
+    private $data = [];
 
-    public static function objOut($obj, $out) 
+    public function __get($name) 
     {
-        var_dump($obj);
-        return $out.$obj;
+        return $this->data[$name] ?? null;
+    }
 
+    public function __set($name, $value)
+    {
+        $this->data[$name] = $value;
+    }
+
+    public function __isset($name):bool
+    {
+        return isset($this->data[$name]);
+    }
+
+    public function display($template)
+    {
+        echo $this->render($template);
+    }
+
+    public function render($template)
+    {
+        ob_start();
+        include $template;
+        $content = ob_get_contents();
+        ob_end_clean();
+        return $content;
     }
 }

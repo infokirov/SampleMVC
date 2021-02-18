@@ -15,6 +15,39 @@ abstract class Model
         $db->executeSql($sql,[$this->id]);
     }
 
+    public function save():void
+    {
+
+        if (isset($this->id)) {
+            $this->update();
+        }
+        else {
+            $this->insert();
+        }
+
+    }
+
+    public function update():void
+    {
+        $schema = get_class_vars(static::class);
+        $col = [];
+        $data = [];
+        $schema['id'] = '';
+
+        foreach ($schema as $key => $val)
+        {
+            $col[] = $key . ' = :' . $key;
+            $data[':' . $key] = $this->$key; 
+        }
+
+        $sql = 'UPDATE ' . static::TABLE . ' SET 
+                ' . implode(', ',$col) . '
+                 WHERE id = :id';
+                 
+        $db = new Db();
+        $db->executeSql($sql,$data);
+    }
+
     public function insert():void
     {
         $schema = get_class_vars(static::class);
@@ -23,9 +56,6 @@ abstract class Model
 
         foreach ($schema as $key => $val)
         {
-            if ('id' == $key){
-                continue;
-            }
             $col[] = $key;
             $data[':' . $key] = $this->$key; 
         }
