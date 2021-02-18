@@ -4,7 +4,7 @@ namespace App;
 
 class View 
 {
-    private $data = [];
+    private $data = [];    
 
     public function __get($name) 
     {
