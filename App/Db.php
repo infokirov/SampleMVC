@@ -10,7 +10,7 @@ class Db extends Config
 
     public function __construct()
     {
-        $config = \App\Config::getDb();
+        $config = Config::getDb();
 
         $this->dbh = new \PDO (
             'mysql:host=' . $config['host'] . ';dbname=' . $config['dbname'],

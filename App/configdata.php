@@ -8,6 +8,7 @@ return [
         'password' => 'pass'
     ],
     'dir' => [
-        'template' => 'assets/templates/'
+        'template' => 'assets/templates/',
+        'basedir' => '/home/resident/Project/php'
     ]
 ];

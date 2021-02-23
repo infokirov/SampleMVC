@@ -32,31 +32,29 @@
 	<section class="section">
 	<h1 class="section__h1">Паперкрафт, развертки, DIY, поделки из бумаги</h1>
 
-<?php foreach ($this->news as $item) { ?>
-<h2 class="section__article__h2"><a href="/post/?id=<?php echo $item->id; ?>" class="section__article__h2__link"><?php echo $item->title; ?></a></h2>
+<h2 class="section__article__h2"><?php echo $this->post->title; ?></h2>
     <article class="section__article">
         <div class="section__article__author">
             <i class="far fa-calendar-alt"></i>
-            <time datetime="<?php echo $item->pubdate; ?>"><?php echo strftime('%e %B %G',strtotime($item->pubdate)); ?></time> опубликовал:
-            <i class="fas fa-user-circle"></i> <a href="user.php?id=<?php echo $item->author_id; ?>" class="section__article__author__link"> <?php echo $item->author_id; ?></a>
+            <time datetime="<?php echo $this->post->pubdate; ?>"><?php echo strftime('%e %B %G',strtotime($this->post->pubdate)); ?></time> опубликовал:
+            <i class="fas fa-user-circle"></i> <a href="user.php?id=<?php echo $this->post->author_id; ?>" class="section__article__author__link"> <?php echo $this->post->author_id; ?></a>
         </div>
         <figure class="section__article__figure">
-            <div class="section__article__figure__link"><a href="post.php?id=<?php echo $item->id; ?>"><img src="<?php echo $item->image; ?>" width="200" alt="<?php echo $item->title; ?>"></a></div>
-            <figcaption><?php echo $item->title; ?></figcaption>
+            <div class="section__article__figure__link"><img src="<?php echo $this->post->image; ?>" width="200" alt="<?php echo $this->post->title; ?>"></div>
+            <figcaption><?php echo $this->post->title; ?></figcaption>
         </figure>
 			<div class="section__article__post">
-				<p><?php echo $item->description; ?></p>			
+				<p><?php echo $this->post->content; ?></p>			
 			</div>
-			<a href="post.php?id=<?php echo $item->id; ?>" class="section__article__nextlink">Читать далее  →</a>
         <footer class="section__article__footer">
             <ul>
                 <li><i class="fas fa-eye"></i> 0 </li>
-                <li><i class="fas fa-folder-open"></i> <a href="category.php?id=<?php echo $item->cat_id; ?>"><?php echo $item->cat_id; ?></a></li>
-                <li><i class="fas fa-comments"></i> <a href="post.php?id=<?php echo $item->id; ?>#comments">Комментарии: 0</a></li>
+                <li><i class="fas fa-folder-open"></i> <a href="category.php?id=<?php echo $this->post->cat_id; ?>"><?php echo $this->post->cat_id; ?></a></li>
+                <li><i class="fas fa-comments"></i> <a href="post.php?id=<?php echo $this->post->id; ?>#comments">Комментарии: 0</a></li>
             </ul>
         </footer>
     </article>
- <?php } ?>
+
  
 
  </section>

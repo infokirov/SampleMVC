@@ -10,7 +10,12 @@ class Article extends Model
     public const TABLE = 'news';
     
     public $title;
-    public $content;    
+    public $description;
+    public $content;
+    public $pubdate;
+    public $image;
+    public $author_id;
+    public $cat_id;  
 
     public function getModelName():string
     {

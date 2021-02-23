@@ -83,6 +83,6 @@ abstract class Model
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id = ?';
         $res = $db->query($sql, [$id], static::class);
 
-        return $res ?? false;
+        return $res[0] ?? false;
     }
 }

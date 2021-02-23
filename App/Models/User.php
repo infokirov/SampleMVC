@@ -11,10 +11,13 @@ class User extends Model
     
     public $name;
     public $email;
+    public $login;
+    public $password;
+    public $role;
 
     public function getModelName():string
     {
-        return 'Юзер';
+        return 'Пользователи';
     }
 
 }

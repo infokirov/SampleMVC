@@ -1,22 +1,12 @@
 <?php
 
+require __DIR__ . DIRECTORY_SEPARATOR . 'App/autoload.php';
 
-function pre ($s){
-    echo '<pre>';
-    var_dump($s);
-    echo '</pre>';
-}
+$uri = $_SERVER['REQUEST_URI'];
+$parts = explode(DIRECTORY_SEPARATOR,$uri);
 
-require __DIR__ . DIRECTORY_SEPARATOR . 'autoload.php';
+$ctrl = $parts[1] ? ucfirst($parts[1]) : 'Index';
+$class = '\App\Controllers\\' . $ctrl;
 
-$lim = (!empty($_GET['out'])) ? (int) $_GET['out'] : $lim = 0;
-
-$dir = \App\Config::getDir();
-
-$view = new \App\View;
-
-$view->news = \App\Models\Article::findAll($lim);
-
-$temp = __DIR__ . DIRECTORY_SEPARATOR . $dir['template'] . 'index.tpl.php';
-
-$view->display($temp);
+$ctrl = new $class;
+$ctrl();
