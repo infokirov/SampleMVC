@@ -1,17 +1,12 @@
 <?php
 
+require __DIR__ . DIRECTORY_SEPARATOR . 'App/autoload.php';
 
-function pre ($s){
-    echo '<pre>';
-    var_dump($s);
-    echo '</pre>';
-}
+$uri = $_SERVER['REQUEST_URI'];
+$parts = explode(DIRECTORY_SEPARATOR,$uri);
 
-require __DIR__ . DIRECTORY_SEPARATOR . 'autoload.php';
+$ctrl = $parts[1] ? ucfirst($parts[1]) : 'Index';
+$class = '\App\Controllers\\' . $ctrl;
 
-//$article = new \App\Models\Article();
-$data = \App\Models\User::findAll();
-
-//$data = \App\Models\User::findAll();
-
-pre($data);
+$ctrl = new $class;
+$ctrl();

@@ -6,5 +6,9 @@ return [
         'dbname' => 'php2',
         'user' => 'php2',
         'password' => 'pass'
+    ],
+    'dir' => [
+        'template' => 'assets/templates/',
+        'basedir' => '/home/resident/Project/php'
     ]
 ];
