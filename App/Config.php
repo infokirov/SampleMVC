@@ -19,7 +19,7 @@ class Config
 
     protected function __clone()
     {
-        // клонирование объекта
+        
     }
     
     static public function getInstance()

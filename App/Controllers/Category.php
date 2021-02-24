@@ -2,10 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Models\Article;
 use App\Controller;
 
-class Post extends Controller
+class Category extends Controller
 {
 
     protected function access():bool
@@ -16,16 +15,15 @@ class Post extends Controller
 
     protected function handle():void
     {
-
         $dir = \App\Config::getDir();
-        
-        if (!empty($_GET['id'])) {
+           
+        if (!empty($_GET['id'])){
             $id = (int) $_GET['id'];
-            $this->view->post = Article::findById($id);
-            $temp = $dir['template'] . 'post.tpl.php';
+            $this->view->news = \App\Models\Article::findByCategory($id);
+            $temp = $dir['template'] . 'index.tpl.php'; 
         } else {
-            $this->view->news = Article::findAll();
-            $temp = $dir['template'] . 'index.tpl.php';
+            $temp = $dir['template'] . 'category.tpl.php';
+            $this->view->categories = \App\Models\Category::findAll();
         }
        
         $this->view->display($temp);

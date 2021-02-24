@@ -85,4 +85,13 @@ abstract class Model
 
         return $res[0] ?? false;
     }
+
+    public static function findByCategory(int $id)
+    {
+        $db = new Db();
+        $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE cat_id = ?';
+        $res = $db->query($sql, [$id], static::class);
+
+        return $res;
+    }
 }

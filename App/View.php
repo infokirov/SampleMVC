@@ -2,31 +2,16 @@
 
 namespace App;
 
+use Magic;
+
 class View 
 {
-    private $data = [];    
-
-    public function __get($name) 
-    {
-        return $this->data[$name] ?? null;
-    }
-
-    public function __set($name, $value)
-    {
-        $this->data[$name] = $value;
-    }
-
-    public function __isset($name):bool
-    {
-        return isset($this->data[$name]);
-    }
-
-    public function display($template)
+    public function display($template):void
     {
         echo $this->render($template);
     }
 
-    public function render($template)
+    public function render($template):string
     {
         ob_start();
         include $template;

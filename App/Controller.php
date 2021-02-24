@@ -16,9 +16,9 @@ abstract class Controller
         return true;
     }
 
-    public function __invoke()
+    public function __invoke():void
     {
-        if ($this->access()){
+        if ($this->access()) {
             $this->handle();
         } else {
             die ('Нет доступа');
